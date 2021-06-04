@@ -4,10 +4,28 @@ namespace TikTakToe_program
 {
     class Program
     {
-       public static void Main(string[] args)
+        public static void Main(string[] args)
         {
             char[] board = createBoard();
             showBoard(board);
+            int userMove = getUserMove(board);
+
+        }
+        private static int getUserMove(char[] board)
+        {
+
+            int[] validCells = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            while (true)
+            {
+                Console.WriteLine("go for the next move : from 1-9");
+                int index = Convert.ToInt32(Console.ReadLine());
+                if (Array.Find<int>(validCells, element => element == index) != 0 && isSpaceFree(board, index)) ;
+                return index;
+            }
+        }
+        private static bool isSpaceFree(char[] board, int index)
+        {
+            return board[index] == ' ';
         }
 
         private static void showBoard(char[] board)

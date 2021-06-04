@@ -14,5 +14,6 @@ namespace TikTakToe_program
             string userletter = Console.ReadLine();
             return char.ToUpper(userletter[0]);
         }
+     
     }
 }
