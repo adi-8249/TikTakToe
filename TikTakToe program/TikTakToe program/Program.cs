@@ -4,12 +4,12 @@ namespace TikTakToe_program
 {
     class Program
     {
+        private static object userLetter;
         public static void Main(string[] args)
         {
             char[] board = createBoard();
             showBoard(board);
             int userMove = getUserMove(board);
-
         }
         private static int getUserMove(char[] board)
         {
@@ -30,11 +30,11 @@ namespace TikTakToe_program
 
         private static void showBoard(char[] board)
         {
-            Console.WriteLine("\n" + board[1] + "|" + board[2] + "|" + board[3]);
+            Console.WriteLine("\n" + board[1] + " |" + board[2] + " |" + board[3]);
             Console.WriteLine("-----------");
-            Console.WriteLine("\n" + board[4] + "|" + board[5] + "|" + board[6]);
+            Console.WriteLine("\n" + board[4] + " |" + board[5] + " |" + board[6]);
             Console.WriteLine("-----------");
-            Console.WriteLine("\n" + board[7] + "|" + board[8] + "|" + board[9]);
+            Console.WriteLine("\n" + board[7] + " |" + board[8] + " |" + board[9]);
         }
 
         private static char[] createBoard()
@@ -46,7 +46,12 @@ namespace TikTakToe_program
             }
             return board;
         }
+        private static void makeMove(char[] board, int index, char letter)
+        {
+           bool spaceFree = isSpaceFree(board, index);
+            if (spaceFree) board[index] = letter;
 
+        }
 
     }
 }
