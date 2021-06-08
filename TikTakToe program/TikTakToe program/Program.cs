@@ -14,6 +14,8 @@ namespace TikTakToe_program
             showBoard(board);
             int userMove = getUserMove(board);
             Player player = getWhoStartsFirst();
+            char userLetter = ChooseUserLetter();
+            Console.WriteLine("Check if won" + IsWinner(board,userLetter));
         }
         private static int getUserMove(char[] board)
         {
@@ -65,6 +67,23 @@ namespace TikTakToe_program
         {
             Random random = new Random();
             return (int)(random.Next() * 10) % choices;
+        }
+        private static char ChooseUserLetter()
+        {
+            Console.WriteLine("choose your Letter here");
+            string userletter = Console.ReadLine();
+            return char.ToUpper(userletter[0]);
+        }
+        private static bool IsWinner(char[] b, char ch)
+        {
+            return ((b[1] == ch && b[2] == ch && b[3] == ch) ||
+                    (b[4] == ch && b[5] == ch && b[6] == ch) ||
+                    (b[7] == ch && b[8] == ch && b[9] == ch) ||
+                    (b[1] == ch && b[4] == ch && b[7] == ch) ||
+                    (b[2] == ch && b[5] == ch && b[8] == ch) ||
+                    (b[3] == ch && b[6] == ch && b[9] == ch) ||
+                    (b[1] == ch && b[5] == ch && b[9] == ch) ||
+                    (b[7] == ch && b[5] == ch && b[3] == ch));
         }
 
 
