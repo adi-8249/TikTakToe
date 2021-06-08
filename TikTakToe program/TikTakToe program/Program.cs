@@ -4,12 +4,16 @@ namespace TikTakToe_program
 {
     class Program
     {
+        public enum Player { USER, COMPUTER };
+        public const int Head = 0;
+        public const int Tail = 0;
         private static object userLetter;
         public static void Main(string[] args)
         {
             char[] board = createBoard();
             showBoard(board);
             int userMove = getUserMove(board);
+            Player player = getWhoStartsFirst();
         }
         private static int getUserMove(char[] board)
         {
@@ -50,8 +54,21 @@ namespace TikTakToe_program
         {
            bool spaceFree = isSpaceFree(board, index);
             if (spaceFree) board[index] = letter;
-
+          
         }
+        private static Player getWhoStartsFirst()
+        {
+            int toss = getOneFromRandomChoices(2);
+            return (toss == Head) ? Player.USER : Player.COMPUTER;
+        }
+        private static int getOneFromRandomChoices(int choices)
+        {
+            Random random = new Random();
+            return (int)(random.Next() * 10) % choices;
+        }
+
+
+
 
     }
 }

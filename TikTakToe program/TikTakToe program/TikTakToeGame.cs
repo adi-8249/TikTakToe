@@ -6,6 +6,7 @@ namespace TikTakToe_program
 {
     class TikTakToeGame
     {
+       
       
         char userletter = ChooseUserLetter();
         private static char ChooseUserLetter()
@@ -14,5 +15,7 @@ namespace TikTakToe_program
             string userletter = Console.ReadLine();
             return char.ToUpper(userletter[0]);
         }
+       
+
     }
 }
